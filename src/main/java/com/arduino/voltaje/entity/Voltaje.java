@@ -34,7 +34,7 @@ public class Voltaje implements Serializable{
 
 	@Column(name="create_at")
 	@Temporal(TemporalType.TIMESTAMP)
-//	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date createAt;
 
 	@Transient
@@ -42,6 +42,12 @@ public class Voltaje implements Serializable{
 //	@JsonFormat(pattern="yyyy,MM,dd,HH,mm,ss")
 	private String createAtGoogleChartFomatted;
 
+//	@Transient
+//	@Temporal(TemporalType.TIMESTAMP)
+//	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+//	private Date createAtDateFormatted;
+
+	
 	@PrePersist
 	public void prePersist() {
 		createAt = new Date();
