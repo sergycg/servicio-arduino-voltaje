@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -63,7 +65,9 @@ public class VoltajeController {
 	@ResponseStatus(value = HttpStatus.OK)
 	public JsonObject findAllGoogleChartFormatLastHour() {
 		Date today = new Date();
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Locale esLocale = new Locale("es", "ES");
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", esLocale);
+		formatter.setTimeZone(TimeZone.getTimeZone("Europe/Madrid")); 
 		String sdateTo = formatter.format(today);
 		String sdateFrom = formatter.format(new Date(today.getTime() - (1000 * 60 * 60 * 1)));
 		List<Voltaje> voltaje = voltajeService.getAllBetweenDates(sdateFrom, sdateTo);
@@ -74,7 +78,9 @@ public class VoltajeController {
 	@ResponseStatus(value = HttpStatus.OK)
 	public JsonObject findAllGoogleChartFormatLast8Hour() {
 		Date today = new Date();
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Locale esLocale = new Locale("es", "ES");
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", esLocale);
+		formatter.setTimeZone(TimeZone.getTimeZone("Europe/Madrid")); 
 		String sdateTo = formatter.format(today);
 		String sdateFrom = formatter.format(new Date(today.getTime() - (1000 * 60 * 60 * 8)));
 		List<Voltaje> voltaje = voltajeService.getAllBetweenDates(sdateFrom, sdateTo);
@@ -85,7 +91,9 @@ public class VoltajeController {
 	@ResponseStatus(value = HttpStatus.OK)
 	public JsonObject findAllGoogleChartFormatLast12Hour() {
 		Date today = new Date();
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Locale esLocale = new Locale("es", "ES");
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", esLocale);
+		formatter.setTimeZone(TimeZone.getTimeZone("Europe/Madrid")); 
 		String sdateTo = formatter.format(today);
 		String sdateFrom = formatter.format(new Date(today.getTime() - (1000 * 60 * 60 * 12)));
 		List<Voltaje> voltaje = voltajeService.getAllBetweenDates(sdateFrom, sdateTo);
@@ -96,7 +104,9 @@ public class VoltajeController {
 	@ResponseStatus(value = HttpStatus.OK)
 	public JsonObject findAllGoogleChartFormatLast16Hour() {
 		Date today = new Date();
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Locale esLocale = new Locale("es", "ES");
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", esLocale);
+		formatter.setTimeZone(TimeZone.getTimeZone("Europe/Madrid")); 
 		String sdateTo = formatter.format(today);
 		String sdateFrom = formatter.format(new Date(today.getTime() - (1000 * 60 * 60 * 16)));
 		List<Voltaje> voltaje = voltajeService.getAllBetweenDates(sdateFrom, sdateTo);
@@ -107,7 +117,9 @@ public class VoltajeController {
 	@ResponseStatus(value = HttpStatus.OK)
 	public JsonObject findAllGoogleChartFormatLast24Hour() {
 		Date today = new Date();
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Locale esLocale = new Locale("es", "ES");
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", esLocale);
+		formatter.setTimeZone(TimeZone.getTimeZone("Europe/Madrid")); 
 		String sdateTo = formatter.format(today);
 		String sdateFrom = formatter.format(new Date(today.getTime() - (1000 * 60 * 60 * 24)));
 		List<Voltaje> voltaje = voltajeService.getAllBetweenDates(sdateFrom, sdateTo);
@@ -118,7 +130,9 @@ public class VoltajeController {
 	@ResponseStatus(value = HttpStatus.OK)
 	public JsonObject findAllGoogleChartFormatLast2Days() {
 		Date today = new Date();
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Locale esLocale = new Locale("es", "ES");
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", esLocale);
+		formatter.setTimeZone(TimeZone.getTimeZone("Europe/Madrid")); 
 		String sdateTo = formatter.format(today);
 		String sdateFrom = formatter.format(new Date(today.getTime() - (1000 * 60 * 60 * 24 * 2)));
 		List<Voltaje> voltaje = voltajeService.getAllBetweenDates(sdateFrom, sdateTo);
@@ -129,7 +143,9 @@ public class VoltajeController {
 	@ResponseStatus(value = HttpStatus.OK)
 	public JsonObject findAllGoogleChartFormatLast3Days() {
 		Date today = new Date();
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Locale esLocale = new Locale("es", "ES");
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", esLocale);
+		formatter.setTimeZone(TimeZone.getTimeZone("Europe/Madrid")); 
 		String sdateTo = formatter.format(today);
 		String sdateFrom = formatter.format(new Date(today.getTime() - (1000 * 60 * 60 * 24 * 3)));
 		List<Voltaje> voltaje = voltajeService.getAllBetweenDates(sdateFrom, sdateTo);
@@ -140,7 +156,9 @@ public class VoltajeController {
 	@ResponseStatus(value = HttpStatus.OK)
 	public JsonObject findAllGoogleChartFormatLast5Days() {
 		Date today = new Date();
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Locale esLocale = new Locale("es", "ES");
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", esLocale);
+		formatter.setTimeZone(TimeZone.getTimeZone("Europe/Madrid")); 
 		String sdateTo = formatter.format(today);
 		String sdateFrom = formatter.format(new Date(today.getTime() - (1000 * 60 * 60 * 24 * 5)));
 		List<Voltaje> voltaje = voltajeService.getAllBetweenDates(sdateFrom, sdateTo);
@@ -151,7 +169,9 @@ public class VoltajeController {
 	@ResponseStatus(value = HttpStatus.OK)
 	public JsonObject findAllGoogleChartFormatLastWeek() {
 		Date today = new Date();
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Locale esLocale = new Locale("es", "ES");
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", esLocale);
+		formatter.setTimeZone(TimeZone.getTimeZone("Europe/Madrid")); 
 		String sdateTo = formatter.format(today);
 		String sdateFrom = formatter.format(new Date(today.getTime() - (1000 * 60 * 60 * 24 * 7)));
 		List<Voltaje> voltaje = voltajeService.getAllBetweenDates(sdateFrom, sdateTo);
@@ -162,7 +182,9 @@ public class VoltajeController {
 	@ResponseStatus(value = HttpStatus.OK)
 	public JsonObject findAllGoogleChartFormatLastMonth() {
 		Date today = new Date();
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Locale esLocale = new Locale("es", "ES");
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", esLocale);
+		formatter.setTimeZone(TimeZone.getTimeZone("Europe/Madrid")); 
 		String sdateTo = formatter.format(today);
 		String sdateFrom = formatter.format(addDate(new Date(), 0, -1, 0));
 		List<Voltaje> voltaje = voltajeService.getAllBetweenDates(sdateFrom, sdateTo);

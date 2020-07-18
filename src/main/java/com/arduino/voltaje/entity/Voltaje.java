@@ -3,6 +3,7 @@ package com.arduino.voltaje.entity;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TimeZone;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -79,6 +80,7 @@ public class Voltaje implements Serializable{
 
 	public String getCreateAtGoogleChartFomatted() {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy,MM,dd,HH,mm,ss");
+		formatter.setTimeZone(TimeZone.getTimeZone("Europe/Madrid")); 
 		String format = formatter.format(getCreateAt());
 		return format;
 	}
