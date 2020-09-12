@@ -82,6 +82,11 @@ public class Voltaje implements Serializable{
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy,MM,dd,HH,mm,ss");
 		formatter.setTimeZone(TimeZone.getTimeZone("Europe/Madrid")); 
 		String format = formatter.format(getCreateAt());
+		String data[] = format.split(",");
+		int mes = Integer.parseInt(data[1]) - 1;
+		String parte1 = format.substring(0, 5);
+		String parte2 = format.substring(7);
+		format = parte1 + mes + parte2;
 		return format;
 	}
 
