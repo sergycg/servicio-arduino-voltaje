@@ -24,6 +24,8 @@ import com.arduino.voltaje.service.IVoltajeService;
 import com.github.cliftonlabs.json_simple.JsonArray;
 import com.github.cliftonlabs.json_simple.JsonObject;
 
+import brave.Tracer;
+
 @CrossOrigin(origins = { "*" })
 @RestController
 //@RequestMapping("/Voltaje")
@@ -36,11 +38,15 @@ public class VoltajeController {
 
 	@Autowired
 	private IVoltajeService voltajeService;
+	
+	@Autowired
+	private Tracer tracer;
 
 	@GetMapping("/findAll")
 	public ResponseEntity<?> findAll() {
 		List<Voltaje> voltaje = voltajeService.findByOrderByCreateAtAsc();
 		if (voltaje != null) {
+			tracer.currentSpan().tag("info.mensaje", "Estado Petición: " + HttpStatus.OK);
 			return new ResponseEntity<>(voltaje, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
