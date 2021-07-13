@@ -1,5 +1,6 @@
 package com.arduino.voltaje;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
@@ -19,18 +20,29 @@ public class ServicioArduinoVoltajeApplication {
 //		TimeZone.setDefault(TimeZone.getTimeZone("Europe/Madrid"));
 //	}
 	
+	@Value("${herokuNotIdle.url}")
+	private String herokuNotIdle_url;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(ServicioArduinoVoltajeApplication.class, args);
 	}
-
-    @Scheduled(fixedDelay = 60*1000*15, initialDelay = 500)
+	
+	
+//	* "0 0 * * * *" = the top of every hour of every day.
+//	* "*/10 * * * * *" = every ten seconds.
+//	* "0 0 8-10 * * *" = 8, 9 and 10 o'clock of every day.
+//	* "0 0 8,10 * * *" = 8 and 10 o'clock of every day.
+//	* "0 0/30 8-10 * * *" = 8:00, 8:30, 9:00, 9:30 and 10 o'clock every day.
+//	* "0 0 9-17 * * MON-FRI" = on the hour nine-to-five weekdays
+//	* "0 0 0 25 12 ?" = every Christmas Day at midnight
+	
+//    @Scheduled(fixedDelay = 60*1000*15, initialDelay = 500)
+    @Scheduled(cron = "${herokuNotIdle.cronExpression}")
     public void herokuNotIdle() {
 	System.out.println(" INIT - Heroku not idle execution ");
 	RestTemplate restTemplate = new RestTemplate();
-	ResponseEntity<String> response = restTemplate.exchange("https://arduino-voltaje-heroku.herokuapp.com/help", HttpMethod.GET, null, String.class);
-//	ResponseEntity<String> response2 = restTemplate.exchange("https://eureka-server-heroku.herokuapp.com/", HttpMethod.GET, null, String.class);
-	System.out.println(" FINISH - Heroku not idle execution: " + response);
-//	System.out.println(" FINISH - Heroku not idle execution: " + response2);
-
+	ResponseEntity<String> response = restTemplate.exchange(herokuNotIdle_url, HttpMethod.GET, null, String.class);
+	System.out.println(response);
+	System.out.println(" FINISH - Heroku not idle execution");
     }
 }
